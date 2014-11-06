@@ -1,0 +1,15 @@
+body,
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  height: 100%;
+}
+
+.art-bg { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: transparent; background-size: cover; background-position: center center; background-repeat: no-repeat; }
