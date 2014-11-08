@@ -2,7 +2,6 @@
  <head>
   <title>RijksTab</title>
 
-  <script src="vendor/jquery/dist/jquery.min.js"></script>
   <script src="vendor/moment/min/moment.min.js"></script>
   <script src="vendor/angular/angular.js"></script>
   <script src="vendor/angular-resource/angular-resource.min.js"></script>
@@ -11,21 +10,21 @@
  </head>
  <body >
 
-  <div class="container" ng-controller="TabController">
+  <div class="art-container" ng-controller="TabController">
     <h1>{{mainColor}}</h1>
     <div class="art-bg">
       <div class="art-bg-wrapper">
-        <img ng-src="{{art.dataUrl}}">
-        <!-- <img src="src/images/test1.jpeg"> -->
+        <!-- <img ng-src="{{art.dataUrl}}"> -->
+        <img src="src/images/test3.jpg">
       </div>
     </div>
 
-    <ul>
+    <ul class="topsites">
       <li ng-repeat="site in topSites">
         <a href="{{site.url}}">{{site.title}}</a>
       </li>
     </ul>
-    <p><button ng-click="newImg()">New Art</button></p>
+    <!-- <p><button ng-click="newImg()">New Art</button></p> -->
 
 
   </div>
