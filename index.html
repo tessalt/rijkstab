@@ -1,17 +1,27 @@
 <html ng-app="RijksTab" ng-csp>
  <head>
   <title>RijksTab</title>
+
+  <script src="vendor/jquery/dist/jquery.min.js"></script>
   <script src="vendor/moment/min/moment.min.js"></script>
-  <script src="vendor/angular/angular.min.js"></script>
+  <script src="vendor/angular/angular.js"></script>
   <script src="vendor/angular-resource/angular-resource.min.js"></script>
   <script src="src/main.js"></script>
   <link rel="stylesheet" href="src/styles/main.css">
  </head>
- <body>
+ <body >
 
-  <div ng-controller="TabController">
+  <div class="container" ng-controller="TabController">
+    <h1>{{mainColor}}</h1>
+    <div class="art-bg"><img ng-src="{{art.dataUrl}}"></div>
 
-    <img ng-src="{{art.dataUrl}}" height="{{browserHeight}}"></div>
+    <ul>
+      <li ng-repeat="site in topSites">
+        <a href="{{site.url}}">{{site.title}}</a>
+      </li>
+    </ul>
+    <p><button ng-click="newImg()">New Art</button></p>
+
 
   </div>
 
