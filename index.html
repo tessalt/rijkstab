@@ -13,7 +13,12 @@
 
   <div class="container" ng-controller="TabController">
     <h1>{{mainColor}}</h1>
-    <div class="art-bg"><img ng-src="{{art.dataUrl}}"></div>
+    <div class="art-bg">
+      <div class="art-bg-wrapper">
+        <img ng-src="{{art.dataUrl}}">
+        <!-- <img src="src/images/test1.jpeg"> -->
+      </div>
+    </div>
 
     <ul>
       <li ng-repeat="site in topSites">
