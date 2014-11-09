@@ -7,9 +7,9 @@ body {
   margin: 0;
   padding: 0;
   background: #000;
-  background: #202327;
   font-size: 100%;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  -webkit-transition: background .6s;
 }
 
 .art-container {
@@ -30,11 +30,26 @@ body {
   text-align: center;
   margin: 0 auto;
   position: relative;
+  -webkit-transition: opacity .6s
+}
+
+.art-bg-wrapper.loading {
+  opacity: 0;
 }
 
 .art-bg img {
   display: block;
   height: 100%;
+  opacity: 0;
+  -webkit-transition: opacity .6s
+}
+
+.art-bg img.img-loaded {
+  opacity: 1;
+}
+
+.art-bg img.loading {
+  opacity: 0;
 }
 
 .topsites-container {
@@ -43,7 +58,7 @@ body {
   left: 0;
   height: 100%;
   overflow: scroll;
-  width: 20em;
+  width: 10em;
 }
 
 .topsites-container.hide {
@@ -72,7 +87,8 @@ body {
 .topsites a {
   display: block;
   background: rgba(0,0,0,0.4);
-  color: white;
+  color: rgba(255,255,255,0.8);
+  font-size: 14px;
   text-decoration: none;
   padding: 8px 16px;
   margin-bottom: 8px;
@@ -102,7 +118,7 @@ body {
 
 button {
   background: none;
-  color: white;
+  color:  color: rgba(255,255,255,0.8);
   border: none;
   padding: 8px;
   font-size: 16px;
@@ -133,18 +149,28 @@ button:focus {
   font-weight: normal;
   margin: 0;
   line-height: 1.5;
+  padding: 4px 8px;
+  font-size: 14px;
 }
 
 .art-desc h2 a {
-  background: rgba(0,0,0,0.5);
-  color: white;
-  font-size: 16px;
+  color: rgba(255,255,255,0.8);
   text-decoration: none;
-  padding: 8px;
 }
 
 .newimg-container {
   position: absolute;
   right: 8px;
   bottom: 8px;
+}
+
+
+.ab-light-background a,
+.ab-light-background button {
+  color: #000;
+}
+
+.ab-dark-background a,
+.ab-dark-background button {
+  color: rgba(255,255,255,0.8);
 }

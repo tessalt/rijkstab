@@ -10,7 +10,7 @@
     ps: 1
   }
 
-  var app = angular.module('RijksTab', ['ngResource']);
+  var app = angular.module('RijksTab', ['ngResource', 'mb-adaptive-backgrounds']);
 
   app.factory('imgEncodeService', ['$q', function ($q) {
 
@@ -123,9 +123,22 @@
 
   }]);
 
+  app.directive('imageonload', function() {
+    return {
+      restrict: 'A',
+      link: function(scope, element, attrs) {
+        element.bind('load', function() {
+          element.addClass('img-loaded');
+        });
+
+      }
+    };
+  });
+
   app.controller('TabController', ['$scope', '$http', 'imgService', 'topSitesService', function ($scope, $http, imgService, topSitesService) {
 
     $scope.browserHeight = window.innerHeight;
+
 
     $scope.topSitesClass = 'hide';
 
@@ -142,9 +155,11 @@
     }
 
     $scope.newImg = function() {
+      $scope.loading = 'loading';
       imgService.fetchNewImg().then(function (data){
         $scope.art = data;
-      })
+        $scope.loading = 'loaded';
+      });
     }
 
     imgService.setImg().then(function (data){
