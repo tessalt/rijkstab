@@ -109,14 +109,37 @@
 
   }]);
 
-  app.controller('TabController', ['$scope', '$http', 'imgService', function ($scope, $http, imgService) {
+  app.factory('topSitesService', ['$http', '$q', function ($http, $q) {
 
-    chrome.topSites.get(function (data){
-      $scope.topSites = data;
-      console.log($scope.topSites);
-    });
+    function getTopSites() {
+      var deferred = $q.defer();
+      chrome.topSites.get(function (data){
+        deferred.resolve(data);
+      });
+      return deferred.promise;
+    }
+
+    return getTopSites;
+
+  }]);
+
+  app.controller('TabController', ['$scope', '$http', 'imgService', 'topSitesService', function ($scope, $http, imgService, topSitesService) {
 
     $scope.browserHeight = window.innerHeight;
+
+    $scope.topSitesClass = 'hide';
+
+    $scope.openApps = function() {
+      chrome.tabs.update({url:'chrome://apps'});
+    }
+
+    $scope.toggleTopSites = function() {
+      if ($scope.topSitesClass === 'hide') {
+        $scope.topSitesClass = 'show';
+      } else {
+        $scope.topSitesClass = 'hide';
+      }
+    }
 
     $scope.newImg = function() {
       imgService.fetchNewImg().then(function (data){
@@ -126,6 +149,10 @@
 
     imgService.setImg().then(function (data){
       $scope.art = data;
+    });
+
+    topSitesService().then(function (data){
+      $scope.topSites = data;
     });
 
   }]);

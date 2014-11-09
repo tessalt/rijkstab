@@ -6,7 +6,9 @@ html {
 body {
   margin: 0;
   padding: 0;
+  background: #000;
   background: #202327;
+  font-size: 100%;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 /*
@@ -16,7 +18,6 @@ img {
 */
 
 img {
-  height: 100%;
 }
 
 .art-container {
@@ -26,9 +27,6 @@ img {
 }
 
 .art-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   z-index: -1;
@@ -39,33 +37,134 @@ img {
   display: inline-block;
   text-align: center;
   margin: 0 auto;
+  position: relative;
 }
 
 .art-bg img {
   display: block;
+  height: 100%;
 }
 
-.topsites {
-  list-style: none;
+.topsites-container {
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
   overflow: scroll;
+  width: 20em;
+}
+
+.topsites-container.hide {
+  overflow: hidden;
+}
+
+.topsites-container button {
+  margin: 8px;
+}
+
+.topsites {
+  list-style: none;
+  -webkit-transition: all .2s;
   margin: 0;
   padding: 0;
-  margin-top: 8px;
+}
+
+.topsites-container.show .topsites {
+  transform: translateX(0);
+}
+
+.topsites-container.hide .topsites {
+  transform: translateX(-100%);
 }
 
 .topsites a {
-  display: inline-block;
+  display: block;
   background: rgba(0,0,0,0.4);
   color: white;
   text-decoration: none;
   padding: 8px 16px;
   margin-bottom: 8px;
-  width: 20em;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.topsites a:hover {
+  background: rgba(0,0,0,0.2);
+}
+
+.favicon-wrapper {
+  width: 24px;
+  height: 24px;
+  background: rgba(255,255,255,0.8);
+  border-radius: 50%;
+  display: inline-block;
+  text-align: center;
+  margin-right: 8px;
+}
+
+.favicon-wrapper img {
+  position: relative;
+  top: 4px;
+}
+
+button {
+  background: none;
+  color: white;
+  border: none;
+  padding: 8px;
+  font-size: 16px;
+  text-align: left;
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
+}
+
+.appslink-container {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+}
+
+.art-desc {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  z-index: 10;
+  text-align: left;
+  width: calc(100% -8px);
+}
+
+.art-desc h2 {
+  display: inline-block;
+  font-weight: normal;
+  margin: 0;
+  line-height: 1.5;
+  width: calc(100% - 8px);
+}
+
+.art-desc h2 a {
+  display: inline-block;
+  background: rgba(0,0,0,0.5);
+  color: white;
+  font-size: 16px;
+  text-decoration: none;
+  padding: 8px;
+}
+
+.art-desc p {
+  background: rgba(0,0,0,0.5);
+  color: white;
+  padding: 8px;
+  display: inline-block;
+  font-size: 12px;
+  margin-bottom: 0;
+}
+
+.newimg-container {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
 }

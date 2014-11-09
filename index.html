@@ -6,26 +6,43 @@
   <script src="vendor/angular/angular.js"></script>
   <script src="vendor/angular-resource/angular-resource.min.js"></script>
   <script src="src/main.js"></script>
+  <link rel="stylesheet" href="vendor/angular/angular-csp.css">
   <link rel="stylesheet" href="src/styles/main.css">
  </head>
- <body >
+ <body>
+
 
   <div class="art-container" ng-controller="TabController">
-    <h1>{{mainColor}}</h1>
     <div class="art-bg">
       <div class="art-bg-wrapper">
-        <!-- <img ng-src="{{art.dataUrl}}"> -->
-        <img src="src/images/test3.jpg">
+        <img ng-src="{{art.dataUrl}}">
+        <!-- <img src="src/images/test1.jpeg"> -->
+        <div class="art-desc">
+          <div ng-if="art.links.web"><h2><a href="{{art.links.web}}">{{art.longTitle}}</a></h2></div>
+        </div>
       </div>
     </div>
 
-    <ul class="topsites">
-      <li ng-repeat="site in topSites">
-        <a href="{{site.url}}">{{site.title}}</a>
-      </li>
-    </ul>
-    <!-- <p><button ng-click="newImg()">New Art</button></p> -->
 
+    <div class="topsites-container" ng-class="topSitesClass">
+      <button ng-click="toggleTopSites()">Top Sites</button>
+      <ul class="topsites">
+        <li ng-repeat="site in topSites">
+          <a href="{{site.url}}">
+            <span class="favicon-wrapper"><img ng-src="http://g.etfv.co/{{site.url}}?defaulticon=bluepng" width="16" height="16"></span>
+            {{site.title}}
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="appslink-container">
+      <button ng-click="openApps()">Apps</button>
+    </div>
+
+    <div class="newimg-container">
+      <button ng-click="newImg()">New Image</button>
+    </div>
 
   </div>
 
