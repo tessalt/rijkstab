@@ -118,12 +118,14 @@ body {
 
 button {
   background: none;
-  color:  color: rgba(255,255,255,0.8);
+  color: rgba(255,255,255,0.8);
   border: none;
   padding: 8px;
   font-size: 16px;
   text-align: left;
   cursor: pointer;
+  opacity: 0;
+  -webkit-transition: color .6s;
 }
 
 button:focus {
@@ -149,13 +151,16 @@ button:focus {
   font-weight: normal;
   margin: 0;
   line-height: 1.5;
-  padding: 4px 8px;
   font-size: 14px;
 }
 
 .art-desc h2 a {
+  padding: 4px 8px;
   color: rgba(255,255,255,0.8);
+  background: rgba(0,0,0,0.4);
+  -webkit-transition: color .6s;
   text-decoration: none;
+  display: inline-block;
 }
 
 .newimg-container {
@@ -165,12 +170,12 @@ button:focus {
 }
 
 
-.ab-light-background a,
 .ab-light-background button {
-  color: #000;
+  opacity: 1;
+  color: rgba(0,0,0,0.9);
 }
 
-.ab-dark-background a,
 .ab-dark-background button {
+  opacity: 1;
   color: rgba(255,255,255,0.8);
 }
