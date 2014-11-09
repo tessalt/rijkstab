@@ -11,14 +11,6 @@ body {
   font-size: 100%;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-/*
-img {
-  max-width: 100%;
-}
-*/
-
-img {
-}
 
 .art-container {
   overflow: hidden;
@@ -138,29 +130,17 @@ button:focus {
 }
 
 .art-desc h2 {
-  display: inline-block;
   font-weight: normal;
   margin: 0;
   line-height: 1.5;
-  width: calc(100% - 8px);
 }
 
 .art-desc h2 a {
-  display: inline-block;
   background: rgba(0,0,0,0.5);
   color: white;
   font-size: 16px;
   text-decoration: none;
   padding: 8px;
-}
-
-.art-desc p {
-  background: rgba(0,0,0,0.5);
-  color: white;
-  padding: 8px;
-  display: inline-block;
-  font-size: 12px;
-  margin-bottom: 0;
 }
 
 .newimg-container {
