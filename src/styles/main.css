@@ -26,6 +26,9 @@ body {
 }
 
 .art-bg-wrapper {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
   display: inline-block;
   text-align: center;
   margin: 0 auto;
@@ -39,7 +42,9 @@ body {
 
 .art-bg img {
   display: block;
-  height: 100%;
+  /*height: 100%;*/
+  max-width: 100%;
+  margin-top: -15%;
   opacity: 0;
   -webkit-transition: opacity .6s
 }
