@@ -88,7 +88,7 @@
     function setImg() {
       var deferred = $q.defer();
       chrome.storage.local.get('artwork', function (data) {
-        if (data.length) {
+        if (data.artwork) {
           var today = moment(new Date());
           var updated = moment(JSON.parse(data.artwork.lastUpdated));
           var imgExpired = !updated.isSame(today, 'hour');
@@ -129,24 +129,14 @@
 
   }]);
 
+
   app.directive('imageonload', function() {
     return {
       restrict: 'A',
       link: function(scope, e, attrs) {
         e.bind('load', function() {
-          e.addClass('img-loaded');
-          var width = e[0].naturalWidth;
-          var height = e[0].naturalHeight;
-          var ratio = width / height;
-          console.log(ratio);
-          if (ratio < 1.5) {
-            e.addClass('art-tall');
-          } else {
-            e.addClass('art-wide');
-          }
-          if (ratio > 1 && ratio < 1.4) {
-            e.addClass('art-squarish');
-          }
+          e.addClass('img-loaded');       
+          e.parent().imgLiquid();
         });
       }
     };
@@ -155,7 +145,7 @@
   app.controller('TabController', ['$scope', '$http', 'imgService', 'topSitesService', function ($scope, $http, imgService, topSitesService) {
 
     $scope.browserHeight = window.innerHeight;
-
+    $scope.browserWidth = window.innerWidth;
 
     $scope.topSitesClass = 'hide';
 

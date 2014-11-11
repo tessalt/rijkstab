@@ -2,6 +2,8 @@
  <head>
   <title>RijksTab</title>
 
+  <script src="vendor/jquery/dist/jquery.min.js"></script>
+  <script src="vendor/imgLiquid/js/imgLiquid-min.js"></script>
   <script src="vendor/moment/min/moment.min.js"></script>
   <script src="vendor/angular/angular.js"></script>
   <script src="vendor/angular-adaptive-backgrounds.min.js"></script>
@@ -10,14 +12,14 @@
   <link rel="stylesheet" href="vendor/angular/angular-csp.css">
   <link rel="stylesheet" href="src/styles/main.css">
  </head>
- <body adaptive-background>
+ <body>
 
 
   <div class="art-container" ng-controller="TabController">
     <div class="art-bg">
-      <div class="art-bg-wrapper" ng-class="loading">
-        <!-- <img imageonload ng-src="{{art.dataUrl}}"> -->
-        <img imageonload src="src/images/test1.jpeg">
+      <div class="art-bg-wrapper" ng-class="loading" ng-style="{'width': {{browserWidth}}, 'height': {{browserHeight}}}">
+        <img imageonload ng-src="{{art.dataUrl}}">
+        <!-- <img imageonload src="src/images/test2.jpg"> -->
         <div class="art-desc">
           <div ng-if="art.links.web"><h2><a href="{{art.links.web}}">{{art.longTitle}}</a></h2></div>
         </div>

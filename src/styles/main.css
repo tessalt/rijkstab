@@ -42,26 +42,8 @@ body {
 
 .art-bg img {
   display: block;
-  /*height: 100%;*/
-  /*max-width: 100%;*/
-  /*margin-top: -15%;*/
   opacity: 0;
   -webkit-transition: opacity .6s
-}
-
-.art-wide {
-  height: 100%;
-}
-
-.art-squarish {
-}
-
-.art-tall {
-  margin-top: -15%;
-  width: 100%;
-}
-
-.art-more-tall {
 }
 
 .art-bg img.img-loaded {
