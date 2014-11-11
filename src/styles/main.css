@@ -26,6 +26,9 @@ body {
 }
 
 .art-bg-wrapper {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
   display: inline-block;
   text-align: center;
   margin: 0 auto;
@@ -39,9 +42,26 @@ body {
 
 .art-bg img {
   display: block;
-  height: 100%;
+  /*height: 100%;*/
+  /*max-width: 100%;*/
+  /*margin-top: -15%;*/
   opacity: 0;
   -webkit-transition: opacity .6s
+}
+
+.art-wide {
+  height: 100%;
+}
+
+.art-squarish {
+}
+
+.art-tall {
+  margin-top: -15%;
+  width: 100%;
+}
+
+.art-more-tall {
 }
 
 .art-bg img.img-loaded {
@@ -118,12 +138,13 @@ body {
 
 button {
   background: none;
-  color:  color: rgba(255,255,255,0.8);
+  color: rgba(255,255,255,0.8);
   border: none;
   padding: 8px;
   font-size: 16px;
   text-align: left;
   cursor: pointer;
+  -webkit-transition: color .6s;
 }
 
 button:focus {
@@ -149,13 +170,16 @@ button:focus {
   font-weight: normal;
   margin: 0;
   line-height: 1.5;
-  padding: 4px 8px;
   font-size: 14px;
 }
 
 .art-desc h2 a {
+  padding: 4px 8px;
   color: rgba(255,255,255,0.8);
+  background: rgba(0,0,0,0.4);
+  -webkit-transition: color .6s;
   text-decoration: none;
+  display: inline-block;
 }
 
 .newimg-container {
@@ -164,13 +188,3 @@ button:focus {
   bottom: 8px;
 }
 
-
-.ab-light-background a,
-.ab-light-background button {
-  color: #000;
-}
-
-.ab-dark-background a,
-.ab-dark-background button {
-  color: rgba(255,255,255,0.8);
-}

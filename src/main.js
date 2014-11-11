@@ -132,11 +132,22 @@
   app.directive('imageonload', function() {
     return {
       restrict: 'A',
-      link: function(scope, element, attrs) {
-        element.bind('load', function() {
-          element.addClass('img-loaded');
+      link: function(scope, e, attrs) {
+        e.bind('load', function() {
+          e.addClass('img-loaded');
+          var width = e[0].naturalWidth;
+          var height = e[0].naturalHeight;
+          var ratio = width / height;
+          console.log(ratio);
+          if (ratio < 1.5) {
+            e.addClass('art-tall');
+          } else {
+            e.addClass('art-wide');
+          }
+          if (ratio > 1 && ratio < 1.4) {
+            e.addClass('art-squarish');
+          }
         });
-
       }
     };
   });
