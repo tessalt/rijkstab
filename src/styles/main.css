@@ -37,22 +37,10 @@ body {
 }
 
 .art-bg-wrapper.loading {
-  opacity: 0;
+  /*opacity: 0;*/
 }
 
-.art-bg img {
-  display: block;
-  opacity: 0;
-  -webkit-transition: opacity .6s
-}
 
-.art-bg img.img-loaded {
-  opacity: 1;
-}
-
-.art-bg img.loading {
-  opacity: 0;
-}
 
 .topsites-container {
   position: absolute;
@@ -127,6 +115,7 @@ button {
   text-align: left;
   cursor: pointer;
   -webkit-transition: color .6s;
+  font-family: inherit;
 }
 
 button:focus {

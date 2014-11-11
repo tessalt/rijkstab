@@ -136,7 +136,11 @@
       link: function(scope, e, attrs) {
         e.bind('load', function() {
           e.addClass('img-loaded');       
-          e.parent().imgLiquid();
+          e.parent().imgLiquid({
+            onItemFinish: function (test){
+              console.log(test);
+            }
+          });
         });
       }
     };
@@ -165,7 +169,10 @@
       $scope.loading = 'loading';
       imgService.fetchNewImg().then(function (data){
         $scope.art = data;
-        $scope.loading = 'loaded';
+        // window.setTimeout(function(){
+        //   $scope.loading = 'loaded';
+        // }, 500);
+        // $scope.loading = 'loaded';
       });
     }
 
