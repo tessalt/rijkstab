@@ -134,24 +134,31 @@
     return {
       restrict: 'A',
       link: function(scope, e, attrs) {
+        var parent = e.parent();
         e.bind('load', function() {
-          e.addClass('img-loaded');       
-          e.parent().imgLiquid({
-            onItemFinish: function (test){
-              console.log(test);
+          parent.imgLiquid({
+            onItemFinish: function (){
+              parent.addClass('img-loaded');
             }
           });
+        });
+        attrs.$observe('isLoading', function (loading) {
+          if (loading) {
+            parent.removeClass('img-loaded');
+          }
         });
       }
     };
   });
 
-  app.controller('TabController', ['$scope', '$http', 'imgService', 'topSitesService', function ($scope, $http, imgService, topSitesService) {
+  app.controller('TabController', ['$scope', '$http', '$rootScope', 'imgService', 'topSitesService', function ($scope, $http, $rootScope, imgService, topSitesService) {
 
     $scope.browserHeight = window.innerHeight;
     $scope.browserWidth = window.innerWidth;
 
     $scope.topSitesClass = 'hide';
+
+    $scope.loading = false;
 
     $scope.openApps = function() {
       chrome.tabs.update({url:'chrome://apps'});
@@ -166,13 +173,9 @@
     }
 
     $scope.newImg = function() {
-      $scope.loading = 'loading';
+      $scope.loading = true;
       imgService.fetchNewImg().then(function (data){
         $scope.art = data;
-        // window.setTimeout(function(){
-        //   $scope.loading = 'loaded';
-        // }, 500);
-        // $scope.loading = 'loaded';
       });
     }
 

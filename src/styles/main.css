@@ -33,14 +33,13 @@ body {
   text-align: center;
   margin: 0 auto;
   position: relative;
-  -webkit-transition: opacity .6s
+  -webkit-transition: opacity .6s;
+  opacity: 0;
 }
 
-.art-bg-wrapper.loading {
-  /*opacity: 0;*/
+.art-bg-wrapper.img-loaded {
+  opacity: 1;
 }
-
-
 
 .topsites-container {
   position: absolute;
