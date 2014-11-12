@@ -1,6 +1,6 @@
 <html ng-app="RijksTab" ng-csp>
  <head>
-  <title>RijksTab</title>
+  <title>New Tab</title>
 
   <script src="scripts/main.js"></script>
   <link rel="stylesheet" href="styles/main.css">
@@ -12,7 +12,6 @@
     <div class="art-bg">
       <div class="art-bg-wrapper" ng-style="{'width': {{browserWidth}}, 'height': {{browserHeight}}}">
         <img imageonload ng-src="{{art.dataUrl}}" is-loading="{{loading}}">
-        <!-- <img imageonload src="src/images/test2.jpg"> -->
         <div class="art-desc">
           <div ng-if="art.links.web"><h2><a href="{{art.links.web}}">{{art.longTitle}}</a></h2></div>
         </div>
