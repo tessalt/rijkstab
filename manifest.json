@@ -15,6 +15,10 @@
     "https://*/*",
     "tabs"
   ],
+  "icons": {
+    "48": "icon48.jpg",
+    "128": "icon128.jpg"
+  },
   "manifest_version": 2,
   "content_security_policy": "script-src 'self'; object-src 'self'"
 }

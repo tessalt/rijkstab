@@ -60,7 +60,7 @@ gulp.task('styles', ['cleancss'], function() {
 gulp.task('watch', function() {
   gulp.watch('./src/scripts/**/*.js', ['scripts']);
   gulp.watch('./src/styles/**/*.css', ['styles']);
-  gulp.watch(['./**/*.html'], ['copy']);
+  gulp.watch(['./**/*.html', 'manifest.json'], ['copy']);
 });
 
 gulp.task('build', ['copy', 'scripts', 'styles']);
