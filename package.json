@@ -1,0 +1,28 @@
+{
+  "name": "rijkstab",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tessalt/rijkstab.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tessalt/rijkstab/issues"
+  },
+  "homepage": "https://github.com/tessalt/rijkstab",
+  "devDependencies": {
+    "del": "^0.1.3",
+    "gulp": "^3.8.10",
+    "gulp-concat": "^2.4.1",
+    "gulp-minify-css": "^0.3.11",
+    "gulp-plumber": "^0.6.6",
+    "gulp-uglify": "^1.0.1",
+    "gulp-zip": "^2.0.2"
+  }
+}

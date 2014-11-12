@@ -9,7 +9,7 @@ body {
   background: #000;
   font-size: 100%;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  -webkit-transition: background .6s;
+  -webkit-transition: background .6s linear;
 }
 
 .art-container {
@@ -157,4 +157,3 @@ button:focus {
   right: 8px;
   bottom: 8px;
 }
-
