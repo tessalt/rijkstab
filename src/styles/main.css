@@ -41,49 +41,66 @@ body {
   opacity: 1;
 }
 
-.topsites-container {
+.ui-actions-container {
   position: absolute;
-  top: 0;
-  left: 0;
+  bottom: 0;
+  right: 0;
   height: 100%;
-  overflow: scroll;
-  /*width: 10em;*/
+  /*overflow: scroll;*/
+  width: 100%;
+
 }
 
-.topsites-container.hide {
+.ui-actions {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.ui-actions-container.hide {
   overflow: hidden;
 }
 
-.topsites-container button {
+.ui-actions-container button {
   margin: 8px;
 }
 
 .topsites {
   list-style: none;
-  -webkit-transition: all .2s;
-  margin: 0;
+  -webkit-transition: all .5s;
   padding: 0;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  height: 80%;
 }
 
-.topsites-container.show .topsites {
+.ui-actions-container.show .topsites {
   transform: translateX(0);
 }
 
-.topsites-container.hide .topsites {
-  transform: translateX(-100%);
+.ui-actions-container.hide .topsites {
+  transform: translateX(100%);
 }
 
 .topsites a {
-  display: block;
-  background: rgba(0,0,0,0.4);
+  width: 200px;
+  margin: 10px;
+  text-align: center;
+  background: rgba(0,0,0,0.6);
   color: rgba(255,255,255,0.8);
+  display: block;
   font-size: 14px;
-  text-decoration: none;
-  padding: 8px 16px;
-  margin-bottom: 8px;
-  white-space: nowrap;
-  overflow: hidden;
+  padding:  16px;
   text-overflow: ellipsis;
+  white-space: nowrap;
+  text-decoration: none;
+  overflow: hidden;
 }
 
 .topsites a:hover {
@@ -97,7 +114,8 @@ body {
   border-radius: 50%;
   display: inline-block;
   text-align: center;
-  margin-right: 8px;
+  display: block;
+  margin: 0 auto 16px auto;
 }
 
 .favicon-wrapper img {
@@ -122,9 +140,7 @@ button:focus {
 }
 
 .appslink-container {
-  position: absolute;
-  right: 8px;
-  top: 8px;
+
 }
 
 .art-desc {

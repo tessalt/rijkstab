@@ -19,24 +19,24 @@
     </div>
 
 
-    <div class="topsites-container" ng-class="topSitesClass">
-      <button ng-click="toggleTopSites()">Top Sites</button>
+    <div class="ui-actions-container" ng-class="topSitesClass">
+      <div class="ui-actions">
+        <button ng-click="newImg()">New Image</button>
+        <button ng-click="openApps()">Apps</button>
+        <button ng-click="toggleTopSites()">Top Sites</button>
+      </div>
       <ul class="topsites">
-        <li ng-repeat="site in topSites">
-          <a href="{{site.url}}">
+        <a ng-repeat="site in topSites" href="{{site.url}}">
             <span class="favicon-wrapper"><img ng-src="http://g.etfv.co/{{site.url}}?defaulticon=bluepng" width="16" height="16"></span>
             {{site.title}}
-          </a>
-        </li>
+        </a>
       </ul>
     </div>
 
     <div class="appslink-container">
-      <button ng-click="openApps()">Apps</button>
     </div>
 
     <div class="newimg-container">
-      <button ng-click="newImg()">New Image</button>
     </div>
 
   </div>

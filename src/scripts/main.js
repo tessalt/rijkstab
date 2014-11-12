@@ -16,7 +16,6 @@
 
     function convertImg(url) {
       var deferred = $q.defer();
-      // var colorThief = new ColorThief();
       var canvas = document.createElement('CANVAS'),
           ctx = canvas.getContext('2d'),
           img = new Image;
@@ -28,16 +27,9 @@
         canvas.height = img.height;
         canvas.width = img.width;
         ctx.drawImage(img, 0, 0);
-        // var ct = new CanvasImage(canvas, ctx, img.width, img.height);
         dataURL = canvas.toDataURL('image/jpeg');
-        // try {
-        //   color = colorThief.getColor(ct);
-        // } catch (e) {
-        //   color = [0,0,0];
-        // }
         deferred.resolve({
           dataUrl: dataURL
-          // color: color
         });
         canvas = null;
       }
