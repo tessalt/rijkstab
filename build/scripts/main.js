@@ -3270,6 +3270,13 @@ k+"(\\W|$)","g"),function(b,a){return e+a})):c=c.replace(new RegExp("(/?):"+k+"(
     };
   });
 
+  app.directive('artLoader', function() {
+    return {
+      restrict: 'E',
+      template: '<div class="loader"><div class="loader-progress"></div></div>'
+    }
+  });
+
   app.controller('TabController', ['$scope', '$http', '$rootScope', 'imgService', 'topSitesService', function ($scope, $http, $rootScope, imgService, topSitesService) {
 
     $scope.browserHeight = window.innerHeight;
@@ -3277,7 +3284,7 @@ k+"(\\W|$)","g"),function(b,a){return e+a})):c=c.replace(new RegExp("(/?):"+k+"(
 
     $scope.topSitesClass = 'hide';
 
-    $scope.loading = false;
+    $scope.loading = true;
 
     $scope.openApps = function() {
       chrome.tabs.update({url:'chrome://apps'});
@@ -3301,6 +3308,7 @@ k+"(\\W|$)","g"),function(b,a){return e+a})):c=c.replace(new RegExp("(/?):"+k+"(
 
     imgService.setImg().then(function (data){
       $scope.art = data;
+      $scope.loading = false;
     });
 
     topSitesService().then(function (data){
