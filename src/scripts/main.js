@@ -168,6 +168,7 @@
       $scope.loading = true;
       imgService.fetchNewImg().then(function (data){
         $scope.art = data;
+        $scope.loading = false;
       });
     }
 

@@ -3295,6 +3295,7 @@ k+"(\\W|$)","g"),function(b,a){return e+a})):c=c.replace(new RegExp("(/?):"+k+"(
       $scope.loading = true;
       imgService.fetchNewImg().then(function (data){
         $scope.art = data;
+        $scope.loading = false;
       });
     }
 
