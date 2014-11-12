@@ -47,7 +47,7 @@ body {
   left: 0;
   height: 100%;
   overflow: scroll;
-  width: 10em;
+  /*width: 10em;*/
 }
 
 .topsites-container.hide {
