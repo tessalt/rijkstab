@@ -27,6 +27,8 @@ gulp.task('copy', ['cleanother'], function() {
   .pipe(gulp.dest('./build'));
   gulp.src('manifest.json')
   .pipe(gulp.dest('./build'));
+  gulp.src('./src/images/icons/**/*.*')
+  .pipe(gulp.dest('./build'));
 });
 
 gulp.task('scripts', ['cleanjs'], function() {
