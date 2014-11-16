@@ -33,7 +33,7 @@ gulp.task('copy', ['cleanother'], function() {
 
 gulp.task('scripts', ['cleanjs'], function() {
   gulp.src([
-      './vendor/moment/moment.js',
+      './vendor/moment/min/moment.min.js',
       './vendor/jquery/dist/jquery.min.js',
       './vendor/imgLiquid/js/imgLiquid-min.js',
       './vendor/angular/angular.min.js',
@@ -44,6 +44,7 @@ gulp.task('scripts', ['cleanjs'], function() {
     errorHandler: onError
   }))
   .pipe(concat('main.js'))
+  .pipe(uglify())
   .pipe(gulp.dest('./build/scripts'));
 });
 
