@@ -146,7 +146,7 @@
   app.directive('artLoader', function() {
     return {
       restrict: 'E',
-      template: '<div class="loader"><div class="loader-progress"></div></div>'
+      template: '<span class="loader"><span class="loader-inner"></span></span>'
     }
   });
 
