@@ -202,9 +202,7 @@
 
     $scope.browserHeight = window.innerHeight;
     $scope.browserWidth = window.innerWidth;
-
     $scope.topSitesClass = 'hide';
-
     $scope.notification = '';
     $scope.notificationClass = 'hide';
     $scope.favouritesClass = 'hide';
@@ -217,6 +215,7 @@
     }
 
     $scope.toggleTopSites = function() {
+      $scope.favouritesClass = 'hide';
       if ($scope.topSitesClass === 'hide') {
         $scope.topSitesClass = 'show';
       } else {
@@ -262,6 +261,7 @@
       } else {
         $scope.favouritesClass = 'hide';
       }
+      $scope.topSitesClass = 'hide';
     }
 
     imgService.setImg().then(function (data){

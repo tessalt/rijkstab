@@ -18,21 +18,36 @@
     <div class="art-bg">
       <div class="art-bg-wrapper" ng-style="{'width': {{browserWidth}}, 'height': {{browserHeight}}}">
         <img imageonload ng-src="{{art.dataUrl}}" is-loading="{{loading}}">
-        <div class="art-desc">
-          <button ng-click="addFavourite()" class="art-favourite">Fav</button>
-          <div ng-if="art.links.web"><h2><a href="{{art.links.web}}">{{art.longTitle}}</a></h2></div>
-        </div>
       </div>
     </div>
+        <div class="art-desc" ng-if="art.links.web">
+          <div  ng-class="notificationClass" ng-click="addFavourite()" class="art-favourite">
+          <svg version="1.1" id="svg2" xmlns:svg="http://www.w3.org/2000/svg"
+               xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="44.445px"
+               height="42.263px" viewBox="0 0 44.445 42.263" enable-background="new 0 0 44.445 42.263" xml:space="preserve">
+            <g id="path2160">
+              <path fill="rgba(255,255,255,0.6)" d="M34.929,42.263c-0.98,0-2.755-0.869-8.349-3.857c-1.575-0.841-3.482-1.86-4.292-2.225
+                c-0.81,0.365-2.715,1.383-4.29,2.224c-5.596,2.989-7.371,3.858-8.351,3.858c-0.464,0-0.794-0.169-0.99-0.312
+                c-1.047-0.761-1.006-1.6,0.487-9.977c0.313-1.759,0.693-3.887,0.79-4.771c-0.597-0.658-2.155-2.156-3.442-3.394
+                c-6.132-5.899-6.659-6.555-6.259-7.786c0.4-1.232,1.211-1.453,9.639-2.621c1.77-0.245,3.911-0.542,4.781-0.723
+                c0.441-0.771,1.385-2.717,2.166-4.325C20.533,0.703,20.993,0,22.288,0c1.295,0,1.755,0.703,5.471,8.356
+                c0.78,1.607,1.725,3.553,2.165,4.324c0.87,0.181,3.012,0.478,4.781,0.723c8.428,1.168,9.238,1.389,9.639,2.621
+                c0.4,1.231-0.126,1.887-6.259,7.786c-1.287,1.238-2.845,2.736-3.442,3.394c0.097,0.883,0.476,3.011,0.79,4.769
+                c1.494,8.378,1.535,9.217,0.486,9.979C35.724,42.094,35.394,42.263,34.929,42.263L34.929,42.263z"/>
+            </g>
+            </svg>
+          </div>
+          <h2><a href="{{art.links.web}}">{{art.longTitle}}</a></h2>
+        </div>
 
     <div ng-show="loading"><art-loader></art-loader></div>
 
     <div class="ui-actions-container" ng-class="topSitesClass">
       <div class="ui-actions">
         <button ng-click="newImg()">New Image</button>
+        <button ng-click="toggleFavourites()">Favourites</button>
         <button ng-click="openApps()">Apps</button>
         <button ng-click="toggleTopSites()">Top Sites</button>
-        <button ng-click="toggleFavourites()">View Favourites</button>
       </div>
       <ul class="topsites">
         <a ng-repeat="site in topSites" href="{{site.url}}">

@@ -479,9 +479,7 @@ k+"(\\W|$)","g"),function(b,a){return e+a})):c=c.replace(new RegExp("(/?):"+k+"(
 
     $scope.browserHeight = window.innerHeight;
     $scope.browserWidth = window.innerWidth;
-
     $scope.topSitesClass = 'hide';
-
     $scope.notification = '';
     $scope.notificationClass = 'hide';
     $scope.favouritesClass = 'hide';
@@ -494,6 +492,7 @@ k+"(\\W|$)","g"),function(b,a){return e+a})):c=c.replace(new RegExp("(/?):"+k+"(
     }
 
     $scope.toggleTopSites = function() {
+      $scope.favouritesClass = 'hide';
       if ($scope.topSitesClass === 'hide') {
         $scope.topSitesClass = 'show';
       } else {
@@ -539,6 +538,7 @@ k+"(\\W|$)","g"),function(b,a){return e+a})):c=c.replace(new RegExp("(/?):"+k+"(
       } else {
         $scope.favouritesClass = 'hide';
       }
+      $scope.topSitesClass = 'hide';
     }
 
     imgService.setImg().then(function (data){

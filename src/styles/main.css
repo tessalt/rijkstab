@@ -147,7 +147,29 @@ button:focus {
   max-width: 80%;
 }
 
+.art-desc svg {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  position: absolute;
+  left: 0;
+  top: -3px;
+  cursor: pointer;
+}
+
+.art-desc svg {
+  fill-opacity: 0;
+  stroke: rgba(255,255,255,0.7);
+  stroke-width: 2;
+  -webkit-transition: all .5s;
+}
+
+.art-favourite.show svg {
+  fill-opacity: 1;
+}
+
 .art-desc h2 {
+  padding-left: 28px;
   font-weight: normal;
   margin: 0;
   line-height: 1.5;
