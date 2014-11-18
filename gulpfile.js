@@ -44,7 +44,7 @@ gulp.task('scripts', ['cleanjs'], function() {
     errorHandler: onError
   }))
   .pipe(concat('main.js'))
-  .pipe(uglify())
+  // .pipe(uglify())
   .pipe(gulp.dest('./build/scripts'));
 });
 

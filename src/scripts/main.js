@@ -10,6 +10,17 @@
     ps: 1
   }
 
+
+  function containsObject(obj, list) {
+    var i;
+    for (i = 0; i < list.length; i++) {
+      if (angular.equals(list[i], obj)) {
+        return true;
+      }
+    }
+    return false;
+  };
+
   var app = angular.module('RijksTab', ['ngResource']);
 
   app.factory('imgEncodeService', ['$q', function ($q) {
@@ -54,6 +65,43 @@
     }
 
     return $resource('https://www.rijksmuseum.nl/api/:lang/collection', {}, resourceConfig);
+
+  }]);
+
+  app.factory('favouritesService', ['$q', function ($q) {
+
+    function setFavourite(title, url) {
+      var deferred = $q.defer();
+      getFavourites().then(function (oldFavs) {
+        var favourites = Object.keys(oldFavs).length ? oldFavs.favourites : [];
+        var newFav = {
+          title: title,
+          url: url
+        };
+        if (!favourites.length || !containsObject(newFav, oldFavs.favourites)) {
+          favourites.push(newFav);
+          chrome.storage.local.set({favourites: favourites}, function(){
+            deferred.resolve(favourites);
+          });
+        } else {
+          deferred.reject();
+        }
+      });
+      return deferred.promise;
+    }
+
+    function getFavourites() {
+      var deferred = $q.defer();
+      chrome.storage.local.get('favourites', function (data) {
+        deferred.resolve(data);
+      });
+      return deferred.promise;
+    }
+
+    return {
+      set: setFavourite,
+      get: getFavourites
+    }
 
   }]);
 
@@ -150,14 +198,19 @@
     }
   });
 
-  app.controller('TabController', ['$scope', '$http', '$rootScope', 'imgService', 'topSitesService', function ($scope, $http, $rootScope, imgService, topSitesService) {
+  app.controller('TabController', ['$scope', '$http', '$rootScope', 'imgService', 'topSitesService', 'favouritesService', function ($scope, $http, $rootScope, imgService, topSitesService, favouritesService) {
 
     $scope.browserHeight = window.innerHeight;
     $scope.browserWidth = window.innerWidth;
 
     $scope.topSitesClass = 'hide';
 
+    $scope.notification = '';
+    $scope.notificationClass = 'hide';
+    $scope.favouritesClass = 'hide';
     $scope.loading = true;
+    $scope.favourites = [];
+
 
     $scope.openApps = function() {
       chrome.tabs.update({url:'chrome://apps'});
@@ -177,6 +230,38 @@
         $scope.art = data;
         $scope.loading = false;
       });
+    }
+
+    $scope.addFavourite = function() {
+      favouritesService.set($scope.art.longTitle, $scope.art.links.web).then(function(newFavourites){
+        $scope.notificationClass = 'show';
+        $scope.notification = 'Favourite added.';
+        window.setTimeout(function(){
+          $scope.notificationClass = 'hide';
+          $scope.favourites = newFavourites;
+          $scope.$apply();
+        }, 2000);
+      }, function () {
+        $scope.notificationClass = 'show';
+        $scope.notification = 'Already added to favourites.';
+        window.setTimeout(function(){
+          $scope.notificationClass = 'hide';
+          $scope.$apply();
+        }, 2000);
+      });
+    }
+
+    $scope.toggleFavourites = function() {
+      if ($scope.favouritesClass === 'hide') {
+        if (!$scope.favourites.length) {
+          favouritesService.get().then(function (favourites) {
+            $scope.favourites = favourites.favourites;
+          });
+        }
+        $scope.favouritesClass = 'show';
+      } else {
+        $scope.favouritesClass = 'hide';
+      }
     }
 
     imgService.setImg().then(function (data){

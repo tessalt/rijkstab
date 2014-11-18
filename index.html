@@ -9,10 +9,17 @@
 
 
   <div class="art-container" ng-controller="TabController">
+    <div class="notification" ng-class="notificationClass">
+     <div class="notification-inner">
+      {{notification}}
+      <button ng-click="toggleFavourites()" class="notification-action">View Favourites</button>
+     </div>
+    </div>
     <div class="art-bg">
       <div class="art-bg-wrapper" ng-style="{'width': {{browserWidth}}, 'height': {{browserHeight}}}">
         <img imageonload ng-src="{{art.dataUrl}}" is-loading="{{loading}}">
         <div class="art-desc">
+          <button ng-click="addFavourite()" class="art-favourite">Fav</button>
           <div ng-if="art.links.web"><h2><a href="{{art.links.web}}">{{art.longTitle}}</a></h2></div>
         </div>
       </div>
@@ -25,6 +32,7 @@
         <button ng-click="newImg()">New Image</button>
         <button ng-click="openApps()">Apps</button>
         <button ng-click="toggleTopSites()">Top Sites</button>
+        <button ng-click="toggleFavourites()">View Favourites</button>
       </div>
       <ul class="topsites">
         <a ng-repeat="site in topSites" href="{{site.url}}">
@@ -32,6 +40,11 @@
             {{site.title}}
         </a>
       </ul>
+      <div class="favourites" ng-class="favouritesClass">
+        <ul>
+          <li ng-repeat="favourite in favourites"><a href="{{favourite.url}}">{{favourite.title}}</a></li>
+        </ul>
+      </div>
     </div>
 
     <div class="appslink-container">

@@ -183,6 +183,66 @@ button:focus {
   -webkit-animation: loader-inner 4s infinite ease-in;
 }
 
+.notification {
+  position: absolute;
+  left: 8px;
+  top: 0;
+  color: rgba(255,255,255,0.8);
+  z-index: 100;
+  font-size: 14px;
+  -webkit-transform: translateY(-100%);
+  opacity: 0;
+  -webkit-transition: all .3s;
+}
+
+.notification.show {
+  -webkit-transform: translateY(0);
+  opacity: 1;
+}
+
+.notification-inner {
+  background: rgba(0,0,0,0.4);
+  padding: 16px;
+  margin-top: 8px;
+}
+
+.notification-action {
+  border: 1px solid rgba(255,255,255,0.5);
+  display: block;
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.favourites {
+  position: absolute;
+  z-index: 100;
+  -webkit-transform: translateY(-100%) translateX(-50%);
+  -webkit-transition: all .3s;
+  top: 0;
+  left: 50%;
+  font-size: 14px;
+  max-height: 80%;
+  overflow: scroll;
+}
+
+.favourites ul {
+  background: rgba(0,0,0,0.4);
+  margin-top: 16px;
+  padding-left: 0;
+  list-style: none;
+}
+
+.favourites.show {
+  -webkit-transform: translateY(0) translateX(-50%);
+}
+
+.favourites a {
+  color: rgba(255,255,255,0.8);
+  padding: 8px;
+  display: block;
+  line-height: 1.4;
+}
+
 @-webkit-keyframes loader {
   0% {
     transform: rotate(0deg);
