@@ -131,7 +131,7 @@
         if (data.artwork) {
           var today = moment(new Date());
           var updated = moment(JSON.parse(data.artwork.lastUpdated));
-          var imgExpired = !updated.isSame(today, 'hour');
+          var imgExpired = !updated.isSame(today, 'day');
           if (imgExpired) {
             fetchNewImg().then(function (response){
               deferred.resolve(response);
@@ -176,11 +176,16 @@
       link: function(scope, e, attrs) {
         var parent = e.parent();
         e.bind('load', function() {
-          parent.imgLiquid({
-            onItemFinish: function (){
-              parent.addClass('img-loaded');
-            }
-          });
+          e.removeClass('tall');
+          e.removeClass('reallyTall');
+          var ratio = e[0].naturalHeight / e[0].naturalWidth;
+          if (ratio > 1) {
+            e.addClass('tall');
+          } 
+          if (ratio > 1.3) {
+            e.addClass('reallyTall')
+          }
+          parent.addClass('img-loaded');     
         });
         attrs.$observe('isLoading', function (loading) {
           if (loading) {

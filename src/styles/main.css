@@ -12,17 +12,36 @@ body {
   -webkit-transition: background .6s linear;
 }
 
-.art-container {
+/*.art-container {
   overflow: hidden;
   height: 100%;
   position: relative;
 }
+
+
+
+.art-bg-wrapper {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  display: inline-block;
+  text-align: center;
+  background-position: top;
+  position: relative;
+  -webkit-transition: opacity .2s;
+  opacity: 0;
+}
+
+.art-bg-wrapper.img-loaded {
+  opacity: 1;
+}*/
 
 .art-bg {
   width: 100%;
   height: 100%;
   z-index: -1;
   text-align: center;
+  overflow: hidden;
 }
 
 .art-bg-wrapper {
@@ -31,14 +50,23 @@ body {
   background-size: cover;
   display: inline-block;
   text-align: center;
-  margin: 0 auto;
+  background-position: top;
   position: relative;
   -webkit-transition: opacity .2s;
-  opacity: 0;
+  /*opacity: 0;*/
 }
 
-.art-bg-wrapper.img-loaded {
-  opacity: 1;
+.art-bg-wrapper img {
+  
+  width: 100%;
+}
+
+.art-bg-wrapper img.tall {
+  margin-top: -15%;
+}
+
+.art-bg-wrapper img.reallyTall {
+  margin-top: -15%;
 }
 
 .ui-actions-container {

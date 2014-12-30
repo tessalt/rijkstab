@@ -27,15 +27,14 @@ gulp.task('copy', ['cleanother'], function() {
   .pipe(gulp.dest('./build'));
   gulp.src('manifest.json')
   .pipe(gulp.dest('./build'));
-  gulp.src('./src/images/icons/**/*.*')
-  .pipe(gulp.dest('./build'));
+  gulp.src('./src/images/**/*.*')
+  .pipe(gulp.dest('./build/images'));
 });
 
 gulp.task('scripts', ['cleanjs'], function() {
   gulp.src([
       './vendor/moment/min/moment.min.js',
       './vendor/jquery/dist/jquery.min.js',
-      './vendor/imgLiquid/js/imgLiquid-min.js',
       './vendor/angular/angular.min.js',
       './vendor/angular-resource/angular-resource.min.js',
       './src/scripts/main.js'
