@@ -407,7 +407,7 @@ k+"(\\W|$)","g"),function(b,a){return e+a})):c=c.replace(new RegExp("(/?):"+k+"(
         if (data.artwork) {
           var today = moment(new Date());
           var updated = moment(JSON.parse(data.artwork.lastUpdated));
-          var imgExpired = !updated.isSame(today, 'day');
+          var imgExpired = !updated.isSame(today, 'hour');
           if (imgExpired) {
             fetchNewImg().then(function (response){
               deferred.resolve(response);
